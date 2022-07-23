@@ -9,7 +9,7 @@ This application will use an Express.js back end
 and will save and retrieve note data from a JSON file.
 
 ## Screenshot 
-![Note Taker](Develop\public\assets\img\notehome.PNG) 
+![Note Taker](.\Develop\public\assets\img\notehome.PNG) 
 
 ## User Story 
 AS A small business owner
