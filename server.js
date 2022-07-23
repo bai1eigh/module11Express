@@ -1,19 +1,20 @@
 //setting up dependencies ('outside code that the application depends on')
 //nodejs and its framworks
-const express = require('express')
-const path = require ('path')
+const express = require('express');
+const path = require ('path');
 const fs = require('fs');
 const util = require ('util');
 
 //setting up server
 const app = express();
-var PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001;
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //async
-const readFileAsync = util.promisify(fs.readFile)
-const writeFileAsync = util.promisify(fs.writeFile)
+const readFileAsync = util.promisify(fs.readFile);
+const writeFileAsync = util.promisify(fs.writeFile);
 
 
 //middleware lets static files process
@@ -62,27 +63,26 @@ app.get("/api/notes", function (req, res) {
       writeFileAsync('./develop/db/db.json', JSON.stringify(notes))
     res.send('saved successfully');   
     })
-  });
+  })
 
 
 // HTML routes ||direct user to correct page depending on url
-app.get('*', function (req, res) {
-    res.sendFile(path.join(__dirname, './develop/public/index.html'));
-    });
-    
-app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, './develop/public/index.html'));
-});
-    
+
 app.get('/notes', function (req, res) {
 console.log('server got your request')
-res.sendFile(path.join(__dirname, './develop/public/notes.html' ))
+res.sendFile(path.join(__dirname, "./develop/public/notes.html" ))
 });
 
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname, "./develop/public/index.html"));
+});
+
+app.get('*', function (req, res) {
+    res.sendFile(path.join(__dirname, "./develop/public/index.html"));
+    });
+    
 
 //listening to server
-
-    app.listen(PORT, function ()  {
-        console.log(`App listening on port ${PORT}!`);
-    });
-
+app.listen(PORT, function() {
+  console.log("App listening on PORT " + PORT);
+});
