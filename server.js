@@ -4,7 +4,6 @@ const express = require('express')
 const path = require ('path')
 const fs = require('fs');
 const util = require ('util');
-const bodyParser = require('body-parser');
 
 //setting up server
 const app = express();
