@@ -65,7 +65,7 @@ app.get("/api/notes", function (req, res) {
   });
 
 
-// HTMl routes ||direct user to correct page depending on url
+// HTML routes ||direct user to correct page depending on url
 app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, './develop/public/index.html'));
     });
